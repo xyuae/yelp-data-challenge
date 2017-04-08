@@ -1,0 +1,48 @@
+#AUTHOR GRACE HONG
+
+# THE USAGE OF THIS FILE IS PRE CLEANING YELP DATASET 
+# BULIDING CONNECTION BETWEEN PYTHON AND MYSQL DATABASE
+# AFTER CLEANING UNREASONABLE DATA,PROCESS REFORM AND INDEX 
+
+
+import mysql.connector
+from mysql.connector import Error
+
+try:
+    conn = mysql.connector.connect(host='localhost',
+                                   database='yelp',
+                                   user='root',
+                                   password='Hr123456')
+    if conn.is_connected():
+        print('Connected to MySQL database')
+        cursor = conn.cursor()
+        
+except Error as error:
+    print(error)
+    assert False
+
+ 
+def user_register():
+    """ No users register before Yelp establish or in the future"""
+    query = (" UPDATE Employee SET salary = salary * 1.03 WHERE empID IN (SELECT empID FROM ((SELECT empID,deptID FROM Employee) AS a1 JOIN (SELECT deptID,location FROM Department) AS a2 ON a1.deptID = a2.deptID) WHERE location = 'Kitchener') ")
+    try:
+        cursor.execute(query)
+        conn.commit()
+        print('succeed user_register')
+
+ 
+    except Error as error:
+        print(error)
+        assert False
+
+ 
+def connect_close():
+  """ COLSE to MySQL database """
+  print(cursor)
+  cursor.close()
+  conn.close()
+
+ 
+if __name__ == '__main__':
+    user_register()
+    connect_close()
