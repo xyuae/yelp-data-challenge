@@ -5,6 +5,10 @@
 # Session Data files
 .RData
 
+# json files
+.json
+
+
 # Example code in package build process
 *-Ex.R
 
