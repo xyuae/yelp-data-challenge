@@ -5,6 +5,9 @@
 # Session Data files
 .RData
 
+# pyc files
+*.pyc
+
 # json files
 *.json
 
