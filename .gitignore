@@ -6,7 +6,10 @@
 .RData
 
 # json files
-.json
+*.json
+
+# csv files
+*.csv
 
 
 # Example code in package build process
